@@ -1,6 +1,6 @@
 # MP1 code — installation and usage
 
-Read [the project guide](../GUIDE.md) for the assignment, assessment, deadlines and peer review. This README contains the running instructions and technical rules for the supplied code package. The final repository also includes the [submitted report (PDF)](../report.pdf) and its figures.
+Read [the project guide](GUIDE.md) for the assignment, assessment, deadlines and peer review. This README contains the running instructions and technical rules for the supplied code package. The final repository also includes the [submitted report (PDF)](report.pdf) and its figures.
 
 All commands below run from **code/**. Data and the tokenizer are included. No API key, pretrained weights or additional dataset download is needed; after installing dependencies, training and evaluation work offline.
 
@@ -79,7 +79,7 @@ Training writes `checkpoint.pt` and `metrics.json`. Evaluation writes `test_cpu_
 | `data/` | Supplied splits, tokenizer and dataset hashes; keep unchanged. |
 | `tests/test_contract.py` | Checks your model's causality, normalization, independence and gradients. |
 | `RUN_LOG_TEMPLATE.csv` | Optional experiment-log template. |
-| `PACKAGE_MANIFEST.json` | Release hashes; paths are relative to the package root containing code/ and guide/. |
+| `code/PACKAGE_MANIFEST.json` | Release hashes; paths are relative to this repository root. |
 
 - `build_model(config)` returns a PyTorch model with `context=256`.
 - The supplied trainer calls `forward(ids)` for unnormalized logits; the scorer calls `predict_log_probs(ids)` for finite, normalized natural-log probabilities. Both outputs have shape `[batch, time, 2048]`.
@@ -106,7 +106,7 @@ Measure all three limits for the same frozen predictor:
 
 ## 5. Prepare your submission and reproduce a peer
 
-The [guide](../GUIDE.md) specifies the deadline and website workflow. Include the following in your immutable code repository:
+The [guide](GUIDE.md) specifies the deadline and website workflow. Include the following in your immutable code repository:
 
 - **Report, at most 10 pages including figures, tables and references** 
 - **Reproduction instructions**
@@ -173,7 +173,7 @@ The following hashes identify the checkpoint and the code and data files used to
 | `configs/student_gelu_w224h7d6.json` | `449243185bf72ec70e646366920c0fe910170e1796c822829a7cdb56caa33551` |
 | `data/tokenizer.json` | `020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e` |
 
-The evaluator output also records the protocol, checkpoint hash, implementation hash and tokenizer hash. Before releasing the repository, update `PACKAGE_MANIFEST.json` so its entries match the final files byte for byte.
+The evaluator output also records the protocol, checkpoint hash, implementation hash and tokenizer hash. Before releasing the repository, update `code/PACKAGE_MANIFEST.json` so its entries match the final files byte for byte.
 
 ## 8. AI assistance disclosure
 
